@@ -38,7 +38,7 @@ export default function CustomCase() {
   }
 
   const updateItem = (id: number, newText: any) => {
-    const index = itemsArr.findIndex((item: any) => item.id == id)
+    const index = itemsArr.findIndex((item: any) => item.id === id)
     const data = [...itemsArr]
     data[index].name = newText
     setItemsArr(data)
