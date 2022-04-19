@@ -124,4 +124,34 @@
       height: 200px;
     }
   }
+  .inventory {
+    height: 90%;
+    width: 80vw;
+    h4 {
+      color: white;
+      padding: 0.6em;
+    }
+    button {
+      margin-left: auto;
+    }
+    .inventoryItems {
+      height: 60vh;
+      width: 100%;
+      margin-top: auto;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      .inventoryItem {
+        border: 1px solid black;
+        color: white;
+        height: 60%;
+        h2 {
+          font-size: 3rem;
+        }
+        h4 {
+          padding: 0.5em 0;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
 }

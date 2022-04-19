@@ -74,3 +74,12 @@
     transform: translateX(-2220px);
   }
 }
+
+@media screen and (max-width: 768px) {
+  .customCasePage {
+    .customCase {
+      width: 95%;
+      height: 200px;
+    }
+  }
+}
