@@ -2,7 +2,6 @@ import { useState, useContext } from 'react'
 import { FaLongArrowAltUp } from 'react-icons/fa'
 import { Button, Typography } from '@mui/material'
 import { InventoryItemsContext } from '../contex/InventoryItemsContext'
-import { motion } from 'framer-motion'
 import '../styles/cases.css'
 import { useNavigate } from 'react-router-dom'
 
@@ -23,7 +22,6 @@ export default function CaseComponent({
   const [item, setItem] = useState<any>({})
   const [isActive, setIsActive] = useState<boolean>(false)
   const [isEnoughtMoney, setIsEnoughtMoney] = useState<boolean>(false)
-  const [cssRandVariable, setCssRandVariable] = useState<number>(1470)
   const { addItem, balance } = useContext(InventoryItemsContext)
   const navigate = useNavigate()
 
@@ -31,7 +29,11 @@ export default function CaseComponent({
     setIsActive(true)
     const caseChanceArr: any = []
     const chanceIndex = Math.floor(Math.random() * (maxChance - 0) + 0)
-    setCssRandVariable(Math.floor(Math.random() * (-2740 - -2950) + -2950))
+    const cssRandVariable = Math.floor(Math.random() * (-2740 - -2950) + -2950)
+    document.documentElement.style.setProperty(
+      '--randNumber',
+      `${cssRandVariable}px`
+    )
 
     caseItems.forEach((caseData: any) => {
       if (chanceIndex < caseData.chance) {
@@ -75,15 +77,6 @@ export default function CaseComponent({
       }
     }, 100)
   }
-  const animate = {
-    x: [3600, cssRandVariable, -2840],
-    transition: {
-      duration: 8,
-      times: [null, 0.95, 1],
-      ease: [0.2, 0.8, 0.9, 1],
-      type: 'spring',
-    },
-  }
   return (
     <>
       <Button
@@ -98,14 +91,13 @@ export default function CaseComponent({
       </Typography>
       <div className='cases'>
         {cases.map((item: any, index: number) => (
-          <motion.div
-            animate={animate}
+          <div
             className='item'
             key={index}
             style={{ background: item.ratityColor }}
           >
-            {item.name}
-          </motion.div>
+            <h1>{item.name}</h1>
+          </div>
         ))}
       </div>
       <FaLongArrowAltUp />

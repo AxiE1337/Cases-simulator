@@ -54,7 +54,7 @@
       user-select: none;
       border-radius: 3px;
       margin-left: 10px;
-      transform: translateX(1800%);
+      animation: roll 8s ease forwards;
     }
   }
 }
@@ -65,6 +65,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .inventory {
   min-height: 80vh;
   width: 80vw;
@@ -98,10 +99,22 @@
   width: 6px;
 }
 ::-webkit-scrollbar-thumb {
-  background: blue;
+  background: #202124;
 }
 ::-webkit-scrollbar-track {
-  background-color: rgb(24, 23, 23);
+  background-color: rgba(24, 23, 23, 0);
+}
+
+@keyframes roll {
+  0% {
+    transform: translateX(3600px);
+  }
+  95% {
+    transform: translateX(var(--randNumber));
+  }
+  100% {
+    transform: translateX(-2840px);
+  }
 }
 
 @media screen and (max-width: 768px) {

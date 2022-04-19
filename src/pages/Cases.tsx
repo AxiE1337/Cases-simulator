@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { Button } from '@mui/material'
 import { casesData, weaponCasemaxChance, vehiclesCasemaxChance } from '../data'
+import { motion } from 'framer-motion'
 import '../styles/cases.css'
 import CaseComponent from '../components/CaseComponent'
 
@@ -11,26 +12,36 @@ export default function Cases() {
   if (caseName !== undefined) {
     if (caseName === 'weaponCase') {
       return (
-        <div className='casesPage'>
+        <motion.div
+          className='casesPage'
+          key='weaponCase'
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+        >
           <CaseComponent
             caseItems={casesData.weaponCaseData.items}
             casePrice={casesData.weaponCaseData.casePrice}
             maxChance={weaponCasemaxChance}
             caseName={casesData.weaponCaseData.caseName}
           />
-        </div>
+        </motion.div>
       )
     }
     if (caseName === 'vehiclesCase') {
       return (
-        <div className='casesPage'>
+        <motion.div
+          className='casesPage'
+          key='vehiclesCase'
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+        >
           <CaseComponent
             caseItems={casesData.vehiclesCaseData.items}
             casePrice={casesData.vehiclesCaseData.casePrice}
             maxChance={vehiclesCasemaxChance}
             caseName={casesData.vehiclesCaseData.caseName}
           />
-        </div>
+        </motion.div>
       )
     } else if (caseName !== 'vehiclesCase' && 'weaponCase') {
       return <div>{`case ${caseName} does not exist`}</div>
@@ -38,7 +49,11 @@ export default function Cases() {
   }
 
   return (
-    <div className='casesPage'>
+    <motion.div
+      className='casesPage'
+      initial={{ scaleY: 0 }}
+      animate={{ scaleY: 1 }}
+    >
       <div className='casePreview'>
         <Button onClick={() => navigate('/case/weaponCase')}>
           Weapon case
@@ -49,6 +64,6 @@ export default function Cases() {
           Vehicles case
         </Button>
       </div>
-    </div>
+    </motion.div>
   )
 }
