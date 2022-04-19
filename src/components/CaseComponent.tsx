@@ -4,6 +4,7 @@ import { Button, Typography } from '@mui/material'
 import { InventoryItemsContext } from '../contex/InventoryItemsContext'
 import '../styles/cases.css'
 import { useNavigate } from 'react-router-dom'
+import AccordionComponent from './AccordionComponent'
 
 interface Icase {
   caseItems: any
@@ -89,6 +90,7 @@ export default function CaseComponent({
       <Typography variant='h4' className='caseName'>
         {caseName}
       </Typography>
+      <AccordionComponent data={caseItems} />
       <div className='cases'>
         {cases.map((item: any, index: number) => (
           <div
@@ -110,7 +112,7 @@ export default function CaseComponent({
           {item.name}
         </Typography>
       ) : (
-        <Typography variant='h4' className='itemName'>
+        <Typography variant='h4' className='itemName' style={{ opacity: 0 }}>
           {item.name}
         </Typography>
       )}
