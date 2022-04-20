@@ -1,0 +1,48 @@
+.bonusPage {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h1,
+  h2 {
+    user-select: none;
+  }
+  .tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+    .tile {
+      height: 200px;
+      width: 200px;
+      cursor: pointer;
+      background-color: #ffd700;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h1 {
+        text-align: center;
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .bonusPage {
+    .tiles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 5px;
+      .tile {
+        height: 150px;
+        width: 150px;
+        border: 1px solid black;
+        cursor: pointer;
+      }
+    }
+  }
+}

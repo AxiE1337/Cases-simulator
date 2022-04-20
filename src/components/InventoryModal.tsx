@@ -7,7 +7,9 @@ export default function InventoryModal() {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-  const { balance, items, deleteItem } = useContext(InventoryItemsContext)
+  const { balance, items, deleteItem, bonusData } = useContext(
+    InventoryItemsContext
+  )
 
   const sellItem = (id: number, price: number) => {
     deleteItem && deleteItem(id, price)
@@ -27,8 +29,13 @@ export default function InventoryModal() {
             <AiOutlineClose />
           </Button>
           <Typography variant='h4' className='caseName'>
-            {`Balance: ${balance} RUB`}
+            {`Balance: ${balance.toFixed(2)} RUB`}
           </Typography>
+          {bonusData.bonusType !== undefined && (
+            <Typography variant='h4' className='bonus'>
+              {`You have bonus ${bonusData?.bonusName}. Uses left: ${bonusData?.bonusUses}`}
+            </Typography>
+          )}
           <div className='inventoryItems'>
             {items.map((item: any, index: number) => (
               <div

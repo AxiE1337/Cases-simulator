@@ -1,7 +1,14 @@
 import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import InventoryModal from './InventoryModal'
-import { Button, Menu, MenuItem, Snackbar, IconButton } from '@mui/material'
+import {
+  Button,
+  Menu,
+  MenuItem,
+  Snackbar,
+  IconButton,
+  Modal,
+} from '@mui/material'
 import { AiOutlineClose } from 'react-icons/ai'
 import { HiMenuAlt4 } from 'react-icons/hi'
 import { InventoryItemsContext } from '../contex/InventoryItemsContext'
@@ -11,6 +18,7 @@ export default function NavBar() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [snackBarOpen, setSnackBarOpen] = useState<boolean>(false)
   const [snackBarMessage, setSnackBarMessage] = useState<string>('')
+  const [openModal, setOpenModal] = useState<boolean>(false)
   const open = Boolean(anchorEl)
   const navigate = useNavigate()
 
@@ -27,6 +35,7 @@ export default function NavBar() {
   const handleReset = () => {
     reset && reset()
     setAnchorEl(null)
+    setOpenModal(false)
     handleOpenSnackBar()
   }
 
@@ -44,6 +53,12 @@ export default function NavBar() {
     }
 
     setSnackBarOpen(false)
+  }
+  const handleModalClose = () => {
+    setOpenModal(false)
+  }
+  const handleModalOpen = () => {
+    setOpenModal(true)
   }
 
   const actionSnackBar = (
@@ -75,10 +90,29 @@ export default function NavBar() {
         <MenuItem onClick={() => handleNavigate('/CustomCase')}>
           Custom case
         </MenuItem>
-        <Button color='error' onClick={handleReset}>
+        <MenuItem onClick={() => handleNavigate('/bonus')}>
+          Bonus tiles
+        </MenuItem>
+        <Button color='error' onClick={handleModalOpen}>
           reset
         </Button>
       </Menu>
+      <Modal
+        open={openModal}
+        onClose={handleModalClose}
+        aria-labelledby='modal-modal-title'
+        aria-describedby='modal-modal-description'
+      >
+        <div className='resetModal'>
+          <h3>Everything will be resetted</h3>
+          <div>
+            <Button onClick={handleReset} color='error'>
+              Yes
+            </Button>
+            <Button onClick={handleModalClose}>no</Button>
+          </div>
+        </div>
+      </Modal>
       <Snackbar
         open={snackBarOpen}
         autoHideDuration={3000}

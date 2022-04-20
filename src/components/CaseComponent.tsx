@@ -23,8 +23,20 @@ export default function CaseComponent({
   const [item, setItem] = useState<any>({})
   const [isActive, setIsActive] = useState<boolean>(false)
   const [isEnoughtMoney, setIsEnoughtMoney] = useState<boolean>(false)
-  const { addItem, balance } = useContext(InventoryItemsContext)
+  const { addItem, balance, bonusData } = useContext(InventoryItemsContext)
   const navigate = useNavigate()
+
+  //bonuses
+  let worth = 1
+  if (bonusData.bonusType === 'cost') {
+    casePrice *= bonusData.bonusThing
+  }
+  if (bonusData.bonusType === 'chance') {
+    maxChance *= bonusData.bonusThing
+  }
+  if (bonusData.bonusType === 'worth') {
+    worth = bonusData.bonusThing
+  }
 
   const casesHandler = () => {
     setIsActive(true)
@@ -52,11 +64,11 @@ export default function CaseComponent({
         id: Date.now(),
         name: opendItem.name,
         ratityColor: opendItem.ratityColor,
-        price: opendItem.price,
+        price: opendItem.price * worth,
       }
       setIsActive(false)
       setItem(opendItem)
-      addItem && addItem(newItem)
+      addItem && addItem(newItem, casePrice)
     }, 8100)
 
     for (let i = 0; i < 33; i++) {

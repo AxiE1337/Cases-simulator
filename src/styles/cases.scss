@@ -65,6 +65,26 @@
   align-items: center;
   justify-content: space-between;
 }
+.resetModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 150px;
+  background-color: #292e49;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h3 {
+    user-select: none;
+    color: white;
+  }
+  button {
+    margin-top: 10px;
+  }
+}
 
 .inventory {
   min-height: 80vh;
@@ -78,7 +98,8 @@
   background: rgb(24, 23, 23);
   h4 {
     color: white;
-    padding: 1em;
+    padding: 0.4em;
+    user-select: none;
   }
   button {
     margin-left: auto;
