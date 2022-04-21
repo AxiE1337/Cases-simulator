@@ -79,7 +79,7 @@ export default function BonusPage() {
     <div className='bonusPage'>
       <h1>Bonus tiles</h1>
       <Button disabled={isActive} onClick={handlePlay}>
-        {`Play ${4000} RUB`}
+        {`Play ${bonusTilesPrice} RUB`}
       </Button>
       {isActive && <h2>Click on any tile to get a bonus</h2>}
       <div className='tiles'>

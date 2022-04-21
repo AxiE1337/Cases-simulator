@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 import { FaLongArrowAltUp } from 'react-icons/fa'
 import { BiRocket } from 'react-icons/bi'
-import { Button, Typography } from '@mui/material'
+import { Button, Typography, Badge } from '@mui/material'
 import { InventoryItemsContext } from '../contex/InventoryItemsContext'
 import '../styles/cases.css'
 import { useNavigate } from 'react-router-dom'
@@ -142,7 +142,11 @@ export default function CaseComponent({
         onClick={open}
       >
         {`Open ${casePrice.toFixed(2)} RUB`}
-        {bonusData.bonusType !== undefined && <BiRocket />}
+        {bonusData.bonusType !== undefined && (
+          <Badge badgeContent={bonusData.bonusUses}>
+            <BiRocket style={{ marginRight: '5px' }} />
+          </Badge>
+        )}
       </Button>
     </>
   )
