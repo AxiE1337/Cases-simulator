@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react'
 import { FaLongArrowAltUp } from 'react-icons/fa'
+import { BiRocket } from 'react-icons/bi'
 import { Button, Typography } from '@mui/material'
 import { InventoryItemsContext } from '../contex/InventoryItemsContext'
 import '../styles/cases.css'
@@ -23,7 +24,9 @@ export default function CaseComponent({
   const [item, setItem] = useState<any>({})
   const [isActive, setIsActive] = useState<boolean>(false)
   const [isEnoughtMoney, setIsEnoughtMoney] = useState<boolean>(false)
-  const { addItem, balance, bonusData } = useContext(InventoryItemsContext)
+  const { addItem, balance, bonusData, setBalance } = useContext(
+    InventoryItemsContext
+  )
   const navigate = useNavigate()
 
   //bonuses
@@ -53,12 +56,14 @@ export default function CaseComponent({
         caseChanceArr.push(caseData)
       }
     })
+    console.log(chanceIndex)
 
     const randomIndex = Math.floor(
       Math.random() * (caseChanceArr.length - 0) + 0
     )
     const opendItem = caseChanceArr[randomIndex]
 
+    setBalance(balance - casePrice)
     setTimeout(() => {
       const newItem = {
         id: Date.now(),
@@ -68,7 +73,7 @@ export default function CaseComponent({
       }
       setIsActive(false)
       setItem(opendItem)
-      addItem && addItem(newItem, casePrice)
+      addItem && addItem(newItem)
     }, 8100)
 
     for (let i = 0; i < 33; i++) {
@@ -135,7 +140,10 @@ export default function CaseComponent({
         variant='outlined'
         color={isEnoughtMoney ? 'error' : 'primary'}
         onClick={open}
-      >{`Open ${casePrice} RUB`}</Button>
+      >
+        {`Open ${casePrice.toFixed(2)} RUB`}
+        {bonusData.bonusType !== undefined && <BiRocket />}
+      </Button>
     </>
   )
 }

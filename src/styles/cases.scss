@@ -17,7 +17,14 @@
     user-select: none;
   }
   .opendCaseBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 1em;
+    svg {
+      margin-left: 4px;
+      margin-bottom: 3px;
+    }
   }
   .casePreview {
     height: 25vh;
@@ -150,7 +157,8 @@
     width: 80vw;
     h4 {
       color: white;
-      padding: 0.6em;
+      padding: 0.3em;
+      font-size: 1.1rem;
     }
     button {
       margin-left: auto;

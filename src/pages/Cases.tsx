@@ -43,7 +43,24 @@ export default function Cases() {
           />
         </motion.div>
       )
-    } else if (caseName !== 'vehiclesCase' && 'weaponCase') {
+    }
+    if (caseName === 'planesCase') {
+      return (
+        <motion.div
+          className='casesPage'
+          key='planesCase'
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: 1 }}
+        >
+          <CaseComponent
+            caseItems={casesData.planesCaseData.items}
+            casePrice={casesData.planesCaseData.casePrice}
+            maxChance={vehiclesCasemaxChance}
+            caseName={casesData.planesCaseData.caseName}
+          />
+        </motion.div>
+      )
+    } else if (caseName !== 'vehiclesCase' && 'weaponCase' && 'planesCase') {
       return <div>{`case ${caseName} does not exist`}</div>
     }
   }
@@ -62,6 +79,11 @@ export default function Cases() {
       <div className='casePreview'>
         <Button onClick={() => navigate('/case/vehiclesCase')}>
           Vehicles case
+        </Button>
+      </div>
+      <div className='casePreview'>
+        <Button onClick={() => navigate('/case/planesCase')}>
+          Planes case
         </Button>
       </div>
     </motion.div>

@@ -11,7 +11,7 @@ let bonuses = [
   { id: 5, bonusName: '5', bonusUses: 10, bonusThing: 0, bonusType: 'type' },
   { id: 6, bonusName: '6', bonusUses: 10, bonusThing: 0, bonusType: 'type' },
 ]
-const bonusTilesPrice = 4000
+const bonusTilesPrice = 3000
 
 export default function BonusPage() {
   const [isActive, setIsActive] = useState<boolean>(false)
@@ -37,21 +37,21 @@ export default function BonusPage() {
         {
           id: Math.random() * (5 - 0) + 0,
           bonusName: '80% off to cases',
-          bonusUses: 6,
+          bonusUses: 10,
           bonusThing: 0.2,
           bonusType: 'cost',
         },
         {
           id: Math.random() * (5 - 0) + 0,
           bonusName: 'Multiplies worth of items by 20%',
-          bonusUses: 10,
+          bonusUses: 15,
           bonusThing: 1.2,
           bonusType: 'worth',
         },
         {
           id: Math.random() * (5 - 0) + 0,
           bonusName: 'Multiplies worth of items by 50%',
-          bonusUses: 5,
+          bonusUses: 10,
           bonusThing: 1.5,
           bonusType: 'worth',
         },
@@ -64,9 +64,9 @@ export default function BonusPage() {
         },
         {
           id: Math.random() * (5 - 0) + 0,
-          bonusName: 'x6 to chance',
-          bonusUses: 3,
-          bonusThing: 0.2,
+          bonusName: 'x4 to chance',
+          bonusUses: 5,
+          bonusThing: 0.15,
           bonusType: 'chance',
         },
       ]

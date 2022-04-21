@@ -11,7 +11,7 @@ interface IInventory {
   items: any
   balance: number
   bonusData: any
-  addItem?: (item: any, casePrice: number) => void
+  addItem?: (item: any) => void
   deleteItem?: (itemId: any, itemPrice: any) => void
   reset?: () => void
   addBonus?: (bonusData: any) => void
@@ -33,9 +33,8 @@ export const InventoryItemsProvider: FC<any> = ({ children }) => {
   localStorage.setItem('balance', JSON.stringify(balance))
   localStorage.setItem('bonus', JSON.stringify(bonusData))
 
-  const addItem = (item: any, casePrice: number) => {
-    setItems([...items, item])
-    setBalance(balance - casePrice)
+  const addItem = (item: any) => {
+    setItems((prev: any) => [...prev, item])
     if (bonusData.bonusUses > 1) {
       let uses = bonusData.bonusUses - 1
       setBonusData({ ...bonusData, bonusUses: uses })
