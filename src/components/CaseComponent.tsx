@@ -56,7 +56,6 @@ export default function CaseComponent({
         caseChanceArr.push(caseData)
       }
     })
-    console.log(chanceIndex)
 
     const randomIndex = Math.floor(
       Math.random() * (caseChanceArr.length - 0) + 0

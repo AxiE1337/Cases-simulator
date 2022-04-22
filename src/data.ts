@@ -73,6 +73,8 @@ export const casesData = {
       { name: 'He 51', chance: 130, ratityColor: commonColor, price: 190 },
       { name: 'Pe-8', chance: 10, ratityColor: UltraRareColor, price: 4000 },
       { name: 'F8F-1B', chance: 30, ratityColor: exoticColor, price: 1990 },
+      { name: 'Tu-2', chance: 30, ratityColor: exoticColor, price: 2090 },
+
       { name: 'Fw 190 D12', chance: 40, ratityColor: rareColor, price: 890 },
     ],
   },

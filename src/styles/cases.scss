@@ -61,6 +61,7 @@
       user-select: none;
       border-radius: 3px;
       margin-left: 10px;
+      font-size: 0.8rem;
       animation: roll 8s ease forwards;
     }
   }
@@ -120,6 +121,12 @@
     .inventoryItem {
       border: 1px solid black;
       color: white;
+      h4 {
+        font-size: 1rem;
+      }
+      button {
+        color: white;
+      }
     }
   }
 }
